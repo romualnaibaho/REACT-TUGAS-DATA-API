@@ -11,26 +11,29 @@ const Post = (props) => {
 
     return (
         <div>
-            <Navbar bg="dark" variant="dark" style={{borderRadius: "0px 0px 15px 15px"}}>
+            <Navbar bg="dark" variant="dark" expand="md" style={{borderRadius: "0px 0px 15px 15px"}}>
                 <Container>
                     <Navbar.Brand href="#">My Awesome Notebook</Navbar.Brand>
-                    <Form inline style={{marginLeft: "auto"}}>
-                        <FormControl type="text" placeholder="Find any of your notes..." className="mr-sm-2" style={{borderColor: "blue", width: "300px"}} onChange={(e) => {setSearchTerm(e.target.value)}} />
-                    </Form>
+                    <Navbar.Toggle aria-controls="search" />
+                    <Navbar.Collapse id="search">
+                        <Form inline style={{marginLeft: "auto"}}>
+                            <FormControl type="text" placeholder="Find any of your notes..." className="mr-sm-2" style={{borderColor: "blue", width: "300px"}} onChange={(e) => {setSearchTerm(e.target.value)}} />
+                        </Form>
+                    </Navbar.Collapse>
                 </Container>
             </Navbar>
             <Container>
                 <Row>
                     {props.post.filter((keyword) => {
-                     if(searchTerm == ""){
+                     if(searchTerm === ""){
                          return keyword;
                      }else if(keyword.title.toLowerCase().includes(searchTerm.toLowerCase())){
                          return keyword;
                      }
-                 }).map((data, index) => {
+                    }).map((data, index) => {
                         return(
-                            <Col xs={12} md={4}>
-                                <Card key={index} className="mt-4">
+                            <Col xs={12} md={4} className="mt-4">
+                                <Card key={index} className="mt-4" style={{height: "100%"}}>
                                     <Card.Header>Post {data.id}</Card.Header>
                                     <Card.Body>
                                         <Card.Title>{data.title}</Card.Title>

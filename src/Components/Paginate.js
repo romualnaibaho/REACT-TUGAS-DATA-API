@@ -1,4 +1,4 @@
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 function Paginate (props) {
@@ -11,19 +11,21 @@ function Paginate (props) {
 
     return (
         <Container className="mb-4 mt-4">
-            <nav>
-                <ul className="pagination">
-                    {pageNumbers.map(number => {
-                        return(
-                            <li key={number} className="page-item">
-                                <a onClick={() => props.paginate(number)} href="!#" className="page-link">
-                                    {number}
-                                </a>
-                            </li>
-                        );
-                    })}
-                </ul>
-            </nav>
+            <Row>
+                <Col xs={12} className="mt-4">
+                    <ul className="pagination">
+                        {pageNumbers.map(number => {
+                            return(
+                                <li key={number} className="page-item">
+                                    <a onClick={() => props.paginate(number)} href="!#" className="page-link">
+                                        {number}
+                                    </a>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </Col>
+            </Row>
         </Container>
     );
 }

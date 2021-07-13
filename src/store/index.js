@@ -11,12 +11,10 @@ const reducer = (state = initialState, action) => {
     
     switch(action.type){
         case 'CHANGE-LOADING':
-            return Object.assign({}, state, { loading : !state.loading });
+        return Object.assign({}, state, { loading : !state.loading });
         default:
-            return state;
+        return state;
     }
-
-    return state;
 }
 
 const store = createStore(reducer);
