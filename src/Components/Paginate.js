@@ -10,22 +10,18 @@ function Paginate (props) {
     }
 
     return (
-        <Container className="mb-4 mt-4">
-            <Row>
-                <Col xs={12} className="mt-4">
-                    <ul className="pagination">
-                        {pageNumbers.map(number => {
-                            return(
-                                <li key={number} className="page-item">
-                                    <a onClick={() => props.paginate(number)} href="!#" className="page-link">
-                                        {number}
-                                    </a>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </Col>
-            </Row>
+        <Container style={{marginTop:"3rem"}}>
+            <ul>
+                {pageNumbers.map(number => {
+                    return(
+                        <li key={number} className="mb-4">
+                            <a onClick={() => props.paginate(number)} href="!#" className="page-link">
+                                {number}
+                            </a>
+                        </li>
+                    );
+                })}
+            </ul>
         </Container>
     );
 }
